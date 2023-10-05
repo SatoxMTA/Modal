@@ -1,0 +1,116 @@
+<!-- 1. Estructura del Modal:
+    - Crea un modal con un input de tipo numérico y un botón de confirmación.
+
+2. Funcionalidad del Botón:
+    - Utiliza JavaScript para detectar el clic en el botón de confirmación dentro del modal.
+    - Cuando se hace clic en el botón de confirmación, lee el valor del input numérico ingresado por el usuario.
+
+3. Mostrar y Cerrar el Modal:
+    - Muestra el número ingresado por el usuario en un elemento HTML.
+    - Cierra el modal después de mostrar el número.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+
+
+    <style>
+        .modal {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(106, 103, 103, 0.5);
+        }
+
+        .modal-contenido {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+
+        <button id="mostrar">Mostrar Modal</button>
+        <div id="resultado"></div>
+
+        <div id="modal-id" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar" id="cerrar">&times;</span>
+                <h2>Modal</h2>
+                <p id="error"></p>
+                <p>ingrese un numero a continuacion.</p>
+                <input type="number" name="inputModal" id="inputModal">
+                <button id="enviar"> Enviar </button>
+            </div>
+        </div>
+
+        <script>
+
+            const mostrarModalBtn = document.getElementById('mostrar');
+            const cerrarModalBtn = document.getElementById('cerrar');
+            const modal = document.getElementById('modal-id');
+
+            mostrarModalBtn.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+
+            cerrarModalBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            document.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            const confirmarModalBtn = document.getElementById('enviar')
+            const inputModal = document.getElementById('inputModal')
+            const error = document.getElementById('error')
+            const resultado = document.getElementById('resultado')
+
+            confirmarModalBtn.addEventListener('click', () => {
+                console.log('confirmarModalBtn click')
+                inputValue = parseInt(inputModal.value)
+
+                if (inputModal.value == '') {
+                    error.innerText = "ingrese un valor"
+                    error.style.color = 'red'
+                } else {
+                    modal.style.display = 'none'
+                    resultado.innerText = inputValue
+                    resultado.style.color = 'blue'
+                }
+            }
+            )
+
+        </script>
+
+    </body>
+
+</html>
